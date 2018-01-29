@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, out *Asset) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse(in *jlexer.Lexer, out *Asset) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -48,7 +48,7 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 				if out.Title == nil {
 					out.Title = new(Title)
 				}
-				easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse1(in, &*out.Title)
+				easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse1(in, &*out.Title)
 			}
 		case "img":
 			if in.IsNull() {
@@ -58,7 +58,7 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 				if out.Image == nil {
 					out.Image = new(Image)
 				}
-				easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse2(in, &*out.Image)
+				easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse2(in, &*out.Image)
 			}
 		case "video":
 			if in.IsNull() {
@@ -68,7 +68,7 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 				if out.Video == nil {
 					out.Video = new(Video)
 				}
-				easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse3(in, &*out.Video)
+				easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse3(in, &*out.Video)
 			}
 		case "data":
 			if in.IsNull() {
@@ -78,7 +78,7 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 				if out.Data == nil {
 					out.Data = new(Data)
 				}
-				easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse4(in, &*out.Data)
+				easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse4(in, &*out.Data)
 			}
 		case "link":
 			if in.IsNull() {
@@ -88,7 +88,7 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 				if out.Link == nil {
 					out.Link = new(Link)
 				}
-				easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse5(in, &*out.Link)
+				easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse5(in, &*out.Link)
 			}
 		case "ext":
 			if data := in.Raw(); in.Ok() {
@@ -104,90 +104,88 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer, in Asset) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse(out *jwriter.Writer, in Asset) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"id\":")
-	out.Int(int(in.ID))
-	if in.Required != 0 {
-		if !first {
-			out.RawByte(',')
+	{
+		const prefix string = ",\"id\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"required\":")
+		out.Int(int(in.ID))
+	}
+	if in.Required != 0 {
+		const prefix string = ",\"required\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
 		out.Int(int(in.Required))
 	}
 	if in.Title != nil {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"title\":")
-		if in.Title == nil {
-			out.RawString("null")
+		const prefix string = ",\"title\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
 		} else {
-			easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse1(out, *in.Title)
+			out.RawString(prefix)
 		}
+		easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse1(out, *in.Title)
 	}
 	if in.Image != nil {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"img\":")
-		if in.Image == nil {
-			out.RawString("null")
+		const prefix string = ",\"img\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
 		} else {
-			easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse2(out, *in.Image)
+			out.RawString(prefix)
 		}
+		easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse2(out, *in.Image)
 	}
 	if in.Video != nil {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"video\":")
-		if in.Video == nil {
-			out.RawString("null")
+		const prefix string = ",\"video\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
 		} else {
-			easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse3(out, *in.Video)
+			out.RawString(prefix)
 		}
+		easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse3(out, *in.Video)
 	}
 	if in.Data != nil {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"data\":")
-		if in.Data == nil {
-			out.RawString("null")
+		const prefix string = ",\"data\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
 		} else {
-			easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse4(out, *in.Data)
+			out.RawString(prefix)
 		}
+		easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse4(out, *in.Data)
 	}
 	if in.Link != nil {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"link\":")
-		if in.Link == nil {
-			out.RawString("null")
+		const prefix string = ",\"link\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
 		} else {
-			easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse5(out, *in.Link)
+			out.RawString(prefix)
 		}
+		easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse5(out, *in.Link)
 	}
 	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
@@ -196,27 +194,27 @@ func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer
 // MarshalJSON supports json.Marshaler interface
 func (v Asset) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse(&w, v)
+	easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Asset) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse(w, v)
+	easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Asset) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(&r, v)
+	easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Asset) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse(l, v)
+	easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse(l, v)
 }
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse5(in *jlexer.Lexer, out *Link) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse5(in *jlexer.Lexer, out *Link) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -276,52 +274,62 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse5(in *jlexer.Lexer, 
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse5(out *jwriter.Writer, in Link) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse5(out *jwriter.Writer, in Link) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"url\":")
-	out.String(string(in.URL))
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"clicktrackers\":")
-	if in.ClickTrackers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-		out.RawString("null")
-	} else {
-		out.RawByte('[')
-		for v2, v3 := range in.ClickTrackers {
-			if v2 > 0 {
-				out.RawByte(',')
-			}
-			out.String(string(v3))
+	{
+		const prefix string = ",\"url\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		out.RawByte(']')
+		out.String(string(in.URL))
+	}
+	if len(in.ClickTrackers) != 0 {
+		const prefix string = ",\"clicktrackers\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		{
+			out.RawByte('[')
+			for v2, v3 := range in.ClickTrackers {
+				if v2 > 0 {
+					out.RawByte(',')
+				}
+				out.String(string(v3))
+			}
+			out.RawByte(']')
+		}
 	}
 	if in.FallbackURL != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"fallback\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"fallback\":")
 		out.String(string(in.FallbackURL))
 	}
 	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
 }
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse4(in *jlexer.Lexer, out *Data) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse4(in *jlexer.Lexer, out *Data) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -358,35 +366,43 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse4(in *jlexer.Lexer, 
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse4(out *jwriter.Writer, in Data) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse4(out *jwriter.Writer, in Data) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	if in.Label != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"label\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"label\":")
 		out.String(string(in.Label))
 	}
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"value\":")
-	out.String(string(in.Value))
-	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+	{
+		const prefix string = ",\"value\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
+		out.String(string(in.Value))
+	}
+	if len(in.Ext) != 0 {
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
 }
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse3(in *jlexer.Lexer, out *Video) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse3(in *jlexer.Lexer, out *Video) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -417,19 +433,23 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse3(in *jlexer.Lexer, 
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse3(out *jwriter.Writer, in Video) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse3(out *jwriter.Writer, in Video) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"vasttag\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.VASTTag))
 	}
-	first = false
-	out.RawString("\"vasttag\":")
-	out.String(string(in.VASTTag))
 	out.RawByte('}')
 }
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse2(in *jlexer.Lexer, out *Image) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse2(in *jlexer.Lexer, out *Image) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -468,45 +488,53 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse2(in *jlexer.Lexer, 
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse2(out *jwriter.Writer, in Image) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse2(out *jwriter.Writer, in Image) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	if in.URL != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"url\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"url\":")
 		out.String(string(in.URL))
 	}
 	if in.Width != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"w\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"w\":")
 		out.Int(int(in.Width))
 	}
 	if in.Height != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"h\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"h\":")
 		out.Int(int(in.Height))
 	}
 	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
 }
-func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse1(in *jlexer.Lexer, out *Title) {
+func easyjson3b94576aDecodeGithubComBidbossOpenrtbNativeResponse1(in *jlexer.Lexer, out *Title) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -541,22 +569,28 @@ func easyjson3b94576aDecodeGithubComBsmOpenrtbNativeResponse1(in *jlexer.Lexer, 
 		in.Consumed()
 	}
 }
-func easyjson3b94576aEncodeGithubComBsmOpenrtbNativeResponse1(out *jwriter.Writer, in Title) {
+func easyjson3b94576aEncodeGithubComBidbossOpenrtbNativeResponse1(out *jwriter.Writer, in Title) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"text\":")
-	out.String(string(in.Text))
-	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+	{
+		const prefix string = ",\"text\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
+		out.String(string(in.Text))
+	}
+	if len(in.Ext) != 0 {
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')

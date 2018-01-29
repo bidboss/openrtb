@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonE7952480DecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, out *Title) {
+func easyjsonE7952480DecodeGithubComBidbossOpenrtbNativeResponse(in *jlexer.Lexer, out *Title) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -52,22 +52,28 @@ func easyjsonE7952480DecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjsonE7952480EncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer, in Title) {
+func easyjsonE7952480EncodeGithubComBidbossOpenrtbNativeResponse(out *jwriter.Writer, in Title) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"text\":")
-	out.String(string(in.Text))
-	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+	{
+		const prefix string = ",\"text\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
+		out.String(string(in.Text))
+	}
+	if len(in.Ext) != 0 {
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
@@ -76,23 +82,23 @@ func easyjsonE7952480EncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer
 // MarshalJSON supports json.Marshaler interface
 func (v Title) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonE7952480EncodeGithubComBsmOpenrtbNativeResponse(&w, v)
+	easyjsonE7952480EncodeGithubComBidbossOpenrtbNativeResponse(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Title) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonE7952480EncodeGithubComBsmOpenrtbNativeResponse(w, v)
+	easyjsonE7952480EncodeGithubComBidbossOpenrtbNativeResponse(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Title) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonE7952480DecodeGithubComBsmOpenrtbNativeResponse(&r, v)
+	easyjsonE7952480DecodeGithubComBidbossOpenrtbNativeResponse(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Title) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonE7952480DecodeGithubComBsmOpenrtbNativeResponse(l, v)
+	easyjsonE7952480DecodeGithubComBidbossOpenrtbNativeResponse(l, v)
 }

@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson16eb09bcDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, out *Link) {
+func easyjson16eb09bcDecodeGithubComBidbossOpenrtbNativeResponse(in *jlexer.Lexer, out *Link) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -77,47 +77,57 @@ func easyjson16eb09bcDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson16eb09bcEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer, in Link) {
+func easyjson16eb09bcEncodeGithubComBidbossOpenrtbNativeResponse(out *jwriter.Writer, in Link) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"url\":")
-	out.String(string(in.URL))
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"clicktrackers\":")
-	if in.ClickTrackers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-		out.RawString("null")
-	} else {
-		out.RawByte('[')
-		for v2, v3 := range in.ClickTrackers {
-			if v2 > 0 {
-				out.RawByte(',')
-			}
-			out.String(string(v3))
+	{
+		const prefix string = ",\"url\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		out.RawByte(']')
+		out.String(string(in.URL))
+	}
+	if len(in.ClickTrackers) != 0 {
+		const prefix string = ",\"clicktrackers\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		{
+			out.RawByte('[')
+			for v2, v3 := range in.ClickTrackers {
+				if v2 > 0 {
+					out.RawByte(',')
+				}
+				out.String(string(v3))
+			}
+			out.RawByte(']')
+		}
 	}
 	if in.FallbackURL != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"fallback\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"fallback\":")
 		out.String(string(in.FallbackURL))
 	}
 	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
@@ -126,23 +136,23 @@ func easyjson16eb09bcEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer
 // MarshalJSON supports json.Marshaler interface
 func (v Link) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson16eb09bcEncodeGithubComBsmOpenrtbNativeResponse(&w, v)
+	easyjson16eb09bcEncodeGithubComBidbossOpenrtbNativeResponse(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Link) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson16eb09bcEncodeGithubComBsmOpenrtbNativeResponse(w, v)
+	easyjson16eb09bcEncodeGithubComBidbossOpenrtbNativeResponse(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Link) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson16eb09bcDecodeGithubComBsmOpenrtbNativeResponse(&r, v)
+	easyjson16eb09bcDecodeGithubComBidbossOpenrtbNativeResponse(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Link) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson16eb09bcDecodeGithubComBsmOpenrtbNativeResponse(l, v)
+	easyjson16eb09bcDecodeGithubComBidbossOpenrtbNativeResponse(l, v)
 }

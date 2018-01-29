@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson6ff3ac1dDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, out *Response) {
+func easyjson6ff3ac1dDecodeGithubComBidbossOpenrtbNativeResponse(in *jlexer.Lexer, out *Response) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -104,50 +104,60 @@ func easyjson6ff3ac1dDecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson6ff3ac1dEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer, in Response) {
+func easyjson6ff3ac1dEncodeGithubComBidbossOpenrtbNativeResponse(out *jwriter.Writer, in Response) {
 	out.RawByte('{')
 	first := true
 	_ = first
 	if in.Ver != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ver\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ver\":")
 		out.String(string(in.Ver))
 	}
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"assets\":")
-	if in.Assets == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
-		out.RawString("null")
-	} else {
-		out.RawByte('[')
-		for v3, v4 := range in.Assets {
-			if v3 > 0 {
-				out.RawByte(',')
-			}
-			(v4).MarshalEasyJSON(out)
+	{
+		const prefix string = ",\"assets\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		out.RawByte(']')
-	}
-	if !first {
-		out.RawByte(',')
-	}
-	first = false
-	out.RawString("\"link\":")
-	(in.Link).MarshalEasyJSON(out)
-	if len(in.ImpTrackers) != 0 {
-		if !first {
-			out.RawByte(',')
-		}
-		first = false
-		out.RawString("\"imptrackers\":")
-		if in.ImpTrackers == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		if in.Assets == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
 			out.RawString("null")
 		} else {
+			out.RawByte('[')
+			for v3, v4 := range in.Assets {
+				if v3 > 0 {
+					out.RawByte(',')
+				}
+				(v4).MarshalEasyJSON(out)
+			}
+			out.RawByte(']')
+		}
+	}
+	if true {
+		const prefix string = ",\"link\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		(in.Link).MarshalEasyJSON(out)
+	}
+	if len(in.ImpTrackers) != 0 {
+		const prefix string = ",\"imptrackers\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		{
 			out.RawByte('[')
 			for v5, v6 := range in.ImpTrackers {
 				if v5 > 0 {
@@ -159,19 +169,23 @@ func easyjson6ff3ac1dEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer
 		}
 	}
 	if in.JSTracker != "" {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"jstracker\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"jstracker\":")
 		out.String(string(in.JSTracker))
 	}
 	if len(in.Ext) != 0 {
-		if !first {
-			out.RawByte(',')
+		const prefix string = ",\"ext\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
 		}
-		first = false
-		out.RawString("\"ext\":")
 		out.Raw((in.Ext).MarshalJSON())
 	}
 	out.RawByte('}')
@@ -180,23 +194,23 @@ func easyjson6ff3ac1dEncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer
 // MarshalJSON supports json.Marshaler interface
 func (v Response) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson6ff3ac1dEncodeGithubComBsmOpenrtbNativeResponse(&w, v)
+	easyjson6ff3ac1dEncodeGithubComBidbossOpenrtbNativeResponse(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Response) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson6ff3ac1dEncodeGithubComBsmOpenrtbNativeResponse(w, v)
+	easyjson6ff3ac1dEncodeGithubComBidbossOpenrtbNativeResponse(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Response) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson6ff3ac1dDecodeGithubComBsmOpenrtbNativeResponse(&r, v)
+	easyjson6ff3ac1dDecodeGithubComBidbossOpenrtbNativeResponse(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Response) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson6ff3ac1dDecodeGithubComBsmOpenrtbNativeResponse(l, v)
+	easyjson6ff3ac1dDecodeGithubComBidbossOpenrtbNativeResponse(l, v)
 }

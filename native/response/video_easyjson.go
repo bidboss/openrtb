@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjson3c9ce8c3DecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, out *Video) {
+func easyjson3c9ce8c3DecodeGithubComBidbossOpenrtbNativeResponse(in *jlexer.Lexer, out *Video) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -48,39 +48,43 @@ func easyjson3c9ce8c3DecodeGithubComBsmOpenrtbNativeResponse(in *jlexer.Lexer, o
 		in.Consumed()
 	}
 }
-func easyjson3c9ce8c3EncodeGithubComBsmOpenrtbNativeResponse(out *jwriter.Writer, in Video) {
+func easyjson3c9ce8c3EncodeGithubComBidbossOpenrtbNativeResponse(out *jwriter.Writer, in Video) {
 	out.RawByte('{')
 	first := true
 	_ = first
-	if !first {
-		out.RawByte(',')
+	{
+		const prefix string = ",\"vasttag\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.VASTTag))
 	}
-	first = false
-	out.RawString("\"vasttag\":")
-	out.String(string(in.VASTTag))
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
 func (v Video) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson3c9ce8c3EncodeGithubComBsmOpenrtbNativeResponse(&w, v)
+	easyjson3c9ce8c3EncodeGithubComBidbossOpenrtbNativeResponse(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v Video) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson3c9ce8c3EncodeGithubComBsmOpenrtbNativeResponse(w, v)
+	easyjson3c9ce8c3EncodeGithubComBidbossOpenrtbNativeResponse(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *Video) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson3c9ce8c3DecodeGithubComBsmOpenrtbNativeResponse(&r, v)
+	easyjson3c9ce8c3DecodeGithubComBidbossOpenrtbNativeResponse(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *Video) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson3c9ce8c3DecodeGithubComBsmOpenrtbNativeResponse(l, v)
+	easyjson3c9ce8c3DecodeGithubComBidbossOpenrtbNativeResponse(l, v)
 }
